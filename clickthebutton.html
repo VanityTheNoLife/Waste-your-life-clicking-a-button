@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Click Counter</title>
+    <style>
+      body {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 24px;
+      }
+      
+      button {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      
+      #milestone-message {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+      
+      #dark-mode-toggle {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: transparent;
+        color: white;
+        border: none;
+        font-size: 16px;
+      }
+      
+      #click-message {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+      
+      .dark-mode {
+        background-color: black;
+        color: white;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <button id="click-me">Click me!</button>
+    <div id="click-message"></div>
+    <div id="milestone-message"></div>
+    <button id="dark-mode-toggle">Dark mode toggle</button>
+    
+    <script>
+      let clickCount = 0;
+      const clickMessage = document.getElementById('click-message');
+      const milestoneMessage = document.getElementById('milestone-message');
+      const clickButton = document.getElementById('click-me');
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      
+      clickButton.addEventListener('click', () => {
+        clickCount++;
+        if (clickCount === 100000) {
+          clickMessage.textContent = 'Congrats, you clicked the button 100k times!';
+          milestoneMessage.textContent = 'You\'re using an autoclicker!';
+        } else if (clickCount === 10000) {
+          clickMessage.textContent = 'Congrats, you clicked the button 10000 times!';
+          milestoneMessage.textContent = 'Your hands are now bones!';
+        } else if (clickCount === 1000) {
+          clickMessage.textContent = 'Congrats, you clicked the button 1000 times!';
+          milestoneMessage.textContent = 'Your hands are probably in much pain...';
+        } else if (clickCount === 100) {
+          clickMessage.textContent = 'Congrats, you clicked the button 100 times!';
+          milestoneMessage.textContent = 'Keep going!';
+        } else {
+          clickMessage.textContent = `Congrats, you clicked the button ${clickCount} times!`;
+          milestoneMessage.textContent = '';
+        }
+      });
+      
+      let isDarkMode = false;
+      
+      darkModeToggle.addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        if (isDarkMode) {
+          document.body.classList.add('dark-mode');
+        } else {
+          document.body.classList.remove('dark-mode');
+        }
+      });
+    </script>
+  </body>
+</html>
+
